@@ -2,40 +2,47 @@ import logo from './logo.svg';
 import './App.css';
 import Navbar from './components/Navbar';
 
+import TextForm from './components/TextForm';
+import About from './components/About';
+import { useState } from 'react';
+import React from 'react'
 
 
+ 
 
-// let name= "Mohammed Nur ;)";
+
 function App() {
+
+  const [mode,setMode]=useState('light');
+  const [btnText,setBtnText]=useState('Enable Dark Mode');
+
+ const toggleMode=()=>{
+  if (mode==='light') {
+    setMode('dark');
+    document.body.style.backgroundColor ='dark';
+    setBtnText("Enable Light Mode")
+  }
+  else{
+    setMode('light');
+    document.body.style.backgroundColor='light';
+    setBtnText("Enable Dark Mode")
+  }
+
+}
+
   return (
-    <>
-    {/* <div>Hi this is me ,Mohammed Nur</div>
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React with Mohammed Nur ; 
-        </a>
-      </header>
-    </div> */}
+    
 
 
      <>
-      {/* <Navbar  title="This title is added through props"  aboutText="AboutTExt using props"   /> */}
+     
+      <Navbar  title="TextUtils" aboutText="About Us" mode={mode} toggleMode={toggleMode}/>
+      <div className="container my-3">
 
-
-      {/* default props */}
-      {/* <Navbar   /> */}
-
-      <Navbar/>
+      <TextForm heading="Enter the text to analyse Below" mode={mode}/>
+      {/* <About mode={mode} btnText={btnText}></About> */}
+    
+      </div>
 
 
      </>
@@ -46,10 +53,10 @@ function App() {
 
 
 
-    </>
+    
   );
   // while returnting you sshould return a single tag and all other tags should be childrenv of returning tag.....but if you want sibling tags also then make ---------->>>>>   <>..all tags inside this </>
-}
+} 
 // the about written code is jsx---(html hi hain jisne JAvascript ka mukut pehna huwa hai)
 
 export default App;

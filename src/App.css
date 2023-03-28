@@ -41,3 +41,7 @@
   color:red;
   background-color: bisque;
 }
+.btn {
+  padding: 3px;
+  margin: 4px;
+}
