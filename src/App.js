@@ -14,18 +14,18 @@ import React from 'react'
 function App() {
 
   const [mode,setMode]=useState('light');
-  const [btnText,setBtnText]=useState('Enable Dark Mode');
 
- const toggleMode=()=>{
+
+ const toggleMode = ()=>{
   if (mode==='light') {
     setMode('dark');
-    document.body.style.backgroundColor ='dark';
-    setBtnText("Enable Light Mode")
+    document.body.style.backgroundColor ='#042743';
+    
   }
   else{
     setMode('light');
-    document.body.style.backgroundColor='light';
-    setBtnText("Enable Dark Mode")
+    document.body.style.backgroundColor='white';
+   
   }
 
 }
