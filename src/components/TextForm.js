@@ -7,12 +7,14 @@ export default function (props) {
         // console.log("UpperCase was Clicked "+ text);
         let newText = text.toUpperCase();
         setText(newText );
-
+        props.showAlert("Converted to UpperCase", "success");
+        
     }
     const handleLoClick=()=>{
         // console.log("UpperCase was Clicked "+ text);
         let newText = text.toLowerCase();
         setText(newText );
+        props.showAlert("Converted to LowerCAse", "success");
 
     }
     const handleOnChange=(event)=>{
@@ -36,21 +38,21 @@ export default function (props) {
         <>
         
         <div className='container'>
-            <h1>{props.heading}</h1>
+            <h1 style={ {color:props.mode ==='dark'?'white':'black'} }>{props.heading}</h1>
             <div className="mb-3">
                 
-                <textarea className="form-control"  value={text}  onChange={handleOnChange} id="myBox" rows="7"></textarea>
+                <textarea className="form-control"  value={text}  onChange={handleOnChange} id="myBox" rows="7" style={ {backgroundColor:props.mode ==='dark'?'grey':'light', color:props.mode==='dark'?'white':'black'} } ></textarea>
             </div>
             <button  onClick={handleUpClick} onChange={handleOnChange} >Convert To Uppercase</button>
             <button  onClick={handleLoClick} onChange={handleOnChange} >Convert To Lowercase</button>
 
         </div>
-        <div className='container'>
+        <div className='container' style={ {color:props.mode ==='dark'?'white':'black'} } >
             <h1>Your Text Summary</h1>
             <p>{text.split(" ").length} words and {text.length} characters </p>
             <p>{0.008*text.split(" ").length} minutes to read  </p>
             <h1>Preveiw</h1>
-            <p>{text}</p>
+            <p>{text.length>0?text:"Enter something to preveiw here"}</p>
 
         </div>
         </>

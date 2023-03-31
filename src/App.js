@@ -6,6 +6,7 @@ import TextForm from './components/TextForm';
 import About from './components/About';
 import { useState } from 'react';
 import React from 'react'
+import Alert from './components/Alert';
 
 
  
@@ -15,16 +16,43 @@ function App() {
 
   const [mode,setMode]=useState('light');
 
+  const [alert, setAlert] = useState(null)
+    const showAlert = (message,type) => {
+
+      setAlert({
+        msg : message,
+        type : type
+      })
+
+      setTimeout(() => {
+        setAlert(null);
+      }, 2000);
+
+    }
+
 
  const toggleMode = ()=>{
   if (mode==='light') {
     setMode('dark');
     document.body.style.backgroundColor ='#042743';
+    showAlert("Dark Mode has been enabled", "success");
+    document.title='TextUtils-DarkMode';
+    // setInterval(() => {
+    //   document.title='TextUtils-is Amazing';
+      
+    // }, 2000);
+    // setInterval(() => {
+    //   document.title=' Install TextUtils now';
+      
+    // }, 1500);
+    
     
   }
   else{
     setMode('light');
     document.body.style.backgroundColor='white';
+    document.title='TextUtils-LightMode';
+    showAlert("Light Mode has been enabled", "success");
    
   }
 
@@ -39,7 +67,9 @@ function App() {
       <Navbar  title="TextUtils" aboutText="About Us" mode={mode} toggleMode={toggleMode}/>
       <div className="container my-3">
 
-      <TextForm heading="Enter the text to analyse Below" mode={mode}/>
+        <Alert  alert={alert}/>
+
+      <TextForm heading="Enter the text to analyse Below" mode={mode}  showAlert={showAlert}/>
       {/* <About mode={mode} btnText={btnText}></About> */}
     
       </div>
