@@ -7,12 +7,12 @@ import { useState } from 'react';
 import React from 'react'
 import Alert from './components/Alert';
 
-import {
-  BrowserRouter as Router,
-  Route,
-  Routes,
+// import {
+//   BrowserRouter as Router,
+//   Route,
+//   Routes,
 
-} from 'react-router-dom'
+// } from 'react-router-dom'
 
 
 
@@ -76,15 +76,16 @@ function App() {
         <Alert alert={alert} />
 
 
-        <Routes>
-          <Route path="/about" element={<About mode={mode}   showAlert={showAlert} />} />
+        {/* <Routes> */}
+          {/* <Route path="/about" element={<About mode={mode}   showAlert={showAlert} />} /> */}
           {/* <Route exact path="/about" element={<About mode={mode}   showAlert={showAlert} />}  ---> this is better /> */}
           
 
-          <Route path="/" element={<TextForm heading="Enter the text to analyse Below" mode={mode} showAlert={showAlert} />} />
+          {/* <Route path="/" element={<TextForm heading="Enter the text to analyse Below" mode={mode} showAlert={showAlert} />} /> */}
+          <TextForm heading="Enter the text to analyse Below" mode={mode} showAlert={showAlert} />
 
 
-        </Routes>
+        {/* </Routes> */}
 
 
 
